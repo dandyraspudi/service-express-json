@@ -19,11 +19,10 @@ accountRoutes.post('/account/addaccount', (req, res) => {
     var existAccounts = getAccountData()
     const newAccountId = Math.floor(100000 + Math.random() * 900000)
  
-    existAccounts[newAccountId] = req.body
+    existAccounts[newAccountId] = {id: newAccountId, data: req.body}
    
-    console.log(existAccounts);
     saveAccountData(existAccounts);
-    res.send({success: true, msg: 'account added successfully'})
+    res.send({success: true, msg: 'account added successfully', existAccounts})
 })
 
 // Read - get all accounts from the json file
