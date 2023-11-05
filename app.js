@@ -4,6 +4,7 @@ const cors = require('cors');
 const fs = require('fs');
 // create our express app
 const app = express()
+const port = process.env.PORT || 3000;
 
 // cors
 app.use(cors());
@@ -14,6 +15,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const routes = require('./route.js')
 app.use('/', routes)
 //start server
-app.listen(3000, ()=>{
-    console.log("listeniing at port:3000")
+app.listen(port, ()=>{
+    console.log("listeniing at port:" + port)
 }) 
